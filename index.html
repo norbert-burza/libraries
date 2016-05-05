@@ -30,37 +30,48 @@
 
       </header>
       <section>
-        <p>There are:
-a) static libraries (<em>.a)
-b) shared libraries (</em>.so)</p>
+        <p>There are:</p>
 
-<p>Static library is essentialy a set of object files.</p>
+<ul>
+<li>static libraries (*.a)</li>
+<li>shared libraries (*.so)</li>
+</ul>
 
-<p>How to create an object file?
-tools.cpp</p>
+<p>A static library is essentialy a set of object files.</p>
 
-<div class="highlight highlight-source-c++"><pre>    #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+<p><em>How to create an object file?</em></p>
 
-    <span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
 
-    <span class="pl-k">int</span> <span class="pl-en">foo</span>()
-    {
-    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>I'm foo()<span class="pl-pds">"</span></span> &lt;&lt; endl;
-    }</pre></div>
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
 
-<p>g++ -c tools.cpp
-"the -c option says not to run the linker" (man page citation)
-Result: tools.o (an object file)</p>
+<span class="pl-k">int</span> <span class="pl-en">foo</span>()
+{
+  cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>I'm foo()<span class="pl-pds">"</span></span> &lt;&lt; endl;
+}</pre></div>
 
-<p>How to create a static library?
-ar -cq libtools.a tools.o</p>
+<pre><code>g++ -c tools.cpp
+</code></pre>
 
-<p>And check the results:
-[root@norbert-redhat lib]# ar -t libtools.a
-tools.o</p>
+<blockquote>
+<p>the -c option says not to run the linker 
+(man page citation)</p>
+</blockquote>
 
-<p>So... how to use it?
-main.cpp</p>
+<p>Result: tools.o</p>
+
+<p><em>How to create a static library?</em></p>
+
+<pre><code>ar -cq libtools.a tools.o
+</code></pre>
+
+<p>And check the results (list the content of a specified archive):</p>
+
+<pre><code>$ ar -t libtools.a
+tools.o
+</code></pre>
+
+<p><em>How to use a library?</em></p>
 
 <div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>tools.h<span class="pl-pds">"</span></span>
@@ -69,21 +80,18 @@ main.cpp</p>
 
 <span class="pl-k">int</span> <span class="pl-en">main</span>()
 {
-        cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>I'm calling foo()...<span class="pl-pds">"</span></span> &lt;&lt; endl;
-        <span class="pl-c1">foo</span>();
-        cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>I'm back!<span class="pl-pds">"</span></span> &lt;&lt; endl;
+  cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>I'm calling foo()...<span class="pl-pds">"</span></span> &lt;&lt; endl;
+  <span class="pl-c1">foo</span>();
+  cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>I'm back!<span class="pl-pds">"</span></span> &lt;&lt; endl;
 }</pre></div>
 
-<div class="highlight highlight-source-shell"><pre>g++ -L <span class="pl-c1">.</span> main.cpp -ltools</pre></div>
+<pre><code>g++ -L . main.cpp -ltools
+</code></pre>
 
-<p>Możesz znaleźć biblioteki statyczne
-find / -name *.a 2&gt;/dev/null</p>
+<p>How to find all static libraries in your system?</p>
 
-<p>Co jest w takim archiwum
-ar -t toextract.a</p>
-
-<p>Biblioteka statyczna to tak naprawdę pliki .o
-pliki pośrednie?</p>
+<pre><code>find / -name *.a 2&gt;/dev/null
+</code></pre>
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
