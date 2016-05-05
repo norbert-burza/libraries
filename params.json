@@ -1,0 +1,6 @@
+{
+  "name": "Libraries",
+  "tagline": "",
+  "body": "There are:\r\na) static libraries (*.a)\r\nb) shared libraries (*.so)\r\n\r\nStatic library is essentialy a set of object files.\r\n\r\nHow to create an object file?\r\ntools.cpp\r\n\r\n```c++\r\n    #include <iostream>\r\n\r\n    using namespace std;\r\n\r\n    int foo()\r\n    {\r\n    cout << \"I'm foo()\" << endl;\r\n    }\r\n```\r\ng++ -c tools.cpp\r\n\"the -c option says not to run the linker\" (man page citation)\r\nResult: tools.o (an object file)\r\n\r\nHow to create a static library?\r\nar -cq libtools.a tools.o\r\n\r\nAnd check the results:\r\n[root@norbert-redhat lib]# ar -t libtools.a\r\ntools.o\r\n\r\nSo... how to use it?\r\nmain.cpp\r\n#include <iostream>\r\n#include \"tools.h\"\r\n\r\nusing namespace std;\r\n\r\nint main()\r\n{\r\n        cout << \"I'm calling foo()...\" << endl;\r\n        foo();\r\n        cout << \"I'm back!\" << endl;\r\n}\r\n\r\n\r\ng++ -L . main.cpp -ltools\r\n\r\n\r\n\r\nMożesz znaleźć biblioteki statyczne\r\nfind / -name *.a 2>/dev/null\r\n\r\nCo jest w takim archiwum\r\nar -t toextract.a\r\n\r\nBiblioteka statyczna to tak naprawdę pliki .o\r\npliki pośrednie?\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
