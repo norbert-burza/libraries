@@ -39,7 +39,8 @@
 
 <p>A static library is essentialy a set of object files.</p>
 
-<p><em>How to create an object file?</em></p>
+<h3>
+<a id="how-to-create-an-object-file" class="anchor" href="#how-to-create-an-object-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to create an object file?</h3>
 
 <div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
 
@@ -55,7 +56,8 @@
 
 <p>Result: tools.o</p>
 
-<p><em>How to create a static library?</em></p>
+<h3>
+<a id="how-to-create-a-static-library" class="anchor" href="#how-to-create-a-static-library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to create a static library?</h3>
 
 <pre><code>ar -cq libtools.a tools.o
 </code></pre>
@@ -66,7 +68,8 @@
 tools.o
 </code></pre>
 
-<p><em>How to use a library?</em></p>
+<h3>
+<a id="how-to-use-a-library" class="anchor" href="#how-to-use-a-library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use a library?</h3>
 
 <div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>tools.h<span class="pl-pds">"</span></span>
@@ -86,7 +89,8 @@ tools.o
 <p>It's important to type <code>-ltools</code> option after <code>main.cpp</code>.
 <a href="http://stackoverflow.com/questions/7783345/library-is-linked-but-reference-is-undefined">Here's why.</a></p>
 
-<p><em>How to find all static libraries in your system?</em></p>
+<h3>
+<a id="how-to-find-all-static-libraries-in-your-system" class="anchor" href="#how-to-find-all-static-libraries-in-your-system" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to find all static libraries in your system?</h3>
 
 <pre><code>find / -name *.a 2&gt;/dev/null
 </code></pre>
