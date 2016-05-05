@@ -97,7 +97,7 @@ tools.o
 <h3>
 <a id="how-to-find-all-static-libraries-in-your-system" class="anchor" href="#how-to-find-all-static-libraries-in-your-system" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to find all static libraries in your system?</h3>
 
-<pre><code>find / -name *.a 2&gt;/dev/null
+<pre><code>find / -name 'lib*ssl*.a' 2&gt;/dev/null | tr '\n' ' '
 </code></pre>
 
 <h3>
